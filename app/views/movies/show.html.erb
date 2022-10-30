@@ -3,7 +3,24 @@
     <h1>
       Movie #<%= @the_movie.id %> details
     </h1>
+     <!-- Add a bookmark button-->
+     <!--just read through it it should make sense, remember session is just cookies encrypted and fetch is just getting that 
+     SPECIFIC value-->
+     <% current_user_bookmarks = Bookmark.where({ :movie_id => @the_movie.id, :user_id => session.fetch(:user_id)})  %>
 
+     <% the_bookmark = current_user_bookmarks.at(0)%>
+
+     <!--if the user has NOT bookmarked the movie-->
+     <% if current_user_bookmarks.count == 0 %>
+    <form action="/insert_bookmark" method="post">
+    <!--use hidden to hide the input but still get the information out of the movie id-->
+      <input type="hidden" name="query_movie_id" value = "<%= @the_movie.id %>" >
+
+      <button>Bookmark this movie!</button>
+    </form>
+    <% else  %>
+      <a href="/delete_bookmark/<%= the_bookmark.id %>">Un-bookmark</a>
+      <% end  %>
     <div>
       <div>
         <a href="/movies">
