@@ -11,7 +11,7 @@
      <% the_bookmark = current_user_bookmarks.at(0)%>
 
      <!--if the user has NOT bookmarked the movie-->
-     <% if current_user_bookmarks.count == 0 %>
+     <% if the_bookmark == nil %>
     <form action="/insert_bookmark" method="post">
     <!--use hidden to hide the input but still get the information out of the movie id-->
       <input type="hidden" name="query_movie_id" value = "<%= @the_movie.id %>" >
@@ -19,8 +19,9 @@
       <button>Bookmark this movie!</button>
     </form>
     <% else  %>
-      <a href="/delete_bookmark/<%= the_bookmark.id %>">Un-bookmark</a>
+      <a href="/delete_bookmark/<%= the_bookmark.id %>"> Un-bookmark </a>
       <% end  %>
+
     <div>
       <div>
         <a href="/movies">
