@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+  # We had @current_user the whole time!!! This makes it possible for us to use if throughout our app because all of our controllers inherite the methods 
+  #defined in the Application controller!!! So cool!!!
   before_action(:load_current_user)
   
   # Uncomment line 5 in this file and line 3 in UserAuthenticationController if you want to force users to sign in before any other actions.

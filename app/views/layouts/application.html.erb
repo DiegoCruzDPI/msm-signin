@@ -22,7 +22,7 @@
     <li><a href= "/characters">Characters</a></li>
 
 <!-- we have to fetch whatever our cookies are so that we can then use then to determin what we want to render for the user-->
-      <% if session.fetch(:user_id) == nil %>
+      <% if @current_user == nil %>
 
     <li><a href= "/user_sign_up">Sign Up</a></li>
     <li><a href= "/user_sign_in">Sign In</a></li>
@@ -31,7 +31,7 @@
 
     <li><a href= "/user_sign_out">Sign Out</a></li>
 <!--Bookmarks goes here becuase it is sensitive to when the use is signed in or not-->
-    <li><a href= "/bookmarks">My Bookmarks</a></li>
+    <li><a href= "/bookmarks"><%=  @current_user.first_name %>'s' Bookmarks</a></li>
 
     <% end  %>
   </ul>

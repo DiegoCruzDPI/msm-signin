@@ -1,13 +1,4 @@
 class BookmarksController < ApplicationController
-# this will literally take whatever instance method defined in the argument and then add it before all of the other actions
-# (index, create ,ect) so that we do not have to type multiple lines of code!!!
-  before_action(:load_current_user)
-  
-  #we created a load user and added self.load_current_user so that we can call the instance method in all of our actions
-  # , making it easier to  have each action associated with a specific user.
-  def load_current_user
-    @current_user = User.where({ :id => session[:user_id]}).at(0)
-  end
   def index
     # we want to just show the users bookmakrs, so we session.fetch the :user_id generated for them through session and assaign the 
     # Bookmarklwhere the :user id that is given
