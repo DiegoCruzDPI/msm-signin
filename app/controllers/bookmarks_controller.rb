@@ -23,6 +23,7 @@ class BookmarksController < ApplicationController
   def create
     the_bookmark = Bookmark.new
     # we used the migrated code. Now we can manipulate it with the values we need
+    # a user must exist for there to even be the chance to bookmark bro!!!
     the_bookmark.user_id = session.fetch(:user_id)
     the_bookmark.movie_id = params.fetch("query_movie_id")
 
